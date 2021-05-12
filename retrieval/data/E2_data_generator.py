@@ -98,7 +98,7 @@ def generate_data(df):
 
 
 
-df = pd.read_csv('cqa_data_8sep.csv', dtype='unicode', header=(0), error_bad_lines=False)
+df = pd.read_csv('cqa_data.csv', dtype='unicode', header=(0), error_bad_lines=False)
 df = df.sample(frac=1).reset_index(drop=True)
 total = len(df.index)
 train_mark = int(0.7*len(df.index))
