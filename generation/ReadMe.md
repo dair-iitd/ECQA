@@ -26,6 +26,8 @@ cd text-generation
 python3 run_GPT2.py -test_file ../data/E2_GPT_train.json -pretrained_model <path to trained XGP> -max_length 150 -model_type gpt2 -output_file ../data/gpt2_props_train_output.json
 python3 run_GPT2.py -test_file ../data/E2_GPT_valid.json -pretrained_model <path to trained XGP> -max_length 150 -model_type gpt2 -output_file ../data/gpt2_props_val_output.json
 python3 run_GPT2.py -test_file ../data/E2_GPT_test.json -pretrained_model <path to trained XGP> -max_length 150 -model_type gpt2 -output_file ../data/gpt2_props_test_output.json
+cd ../data
+python3 preprocess_outp_props_freeflow.py
 ```
 
 ## XGP-W
