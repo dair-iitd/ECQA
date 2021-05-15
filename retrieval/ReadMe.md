@@ -16,8 +16,8 @@ Then run the following commands to generate the processed data for training and 
 
 ```bash
 cd data
-python3 E2_data_generator.py
 python3 ED_omcs_data_gen.py
+python3 E2_data_generator.py
 ```
 
 
