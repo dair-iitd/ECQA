@@ -80,6 +80,6 @@ def make_test_file(filename_in, filename_out):
 	with open(filename_out, 'w') as fp:
 	    json.dump(final_data, fp)
 
-make_data_file('gpt2_train_output.json', 'E2_GPT_outp_props_freeflow_train.txt')
-make_data_file('gpt2_val_output.json', 'E2_GPT_outp_props_freeflow_valid.txt')
-make_test_file('gpt2_test_output.json', 'E2_GPT_outp_props_freeflow_test.json')
+make_data_file('gpt2_props_train_output.json', 'E2_GPT_outp_props_freeflow_train.txt')
+make_data_file('gpt2_props_val_output.json', 'E2_GPT_outp_props_freeflow_valid.txt')
+make_test_file('gpt2_props_test_output.json', 'E2_GPT_outp_props_freeflow_test.json')
