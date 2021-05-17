@@ -108,10 +108,10 @@ You will first need to download the [Stanford CoreNLP 3.6.0](https://stanfordnlp
 Note: SPICE will try to create a cache of parsed sentences in ./spice/cache/. This dramatically speeds up repeated evaluations. The cache directory can be moved by setting 'CACHE_DIR' in ./spice. In the same file, caching can be turned off by removing the '-cache' argument to 'spice_cmd'.
 
 #### CIDEr
-First download the [github repo](https://github.com/vrama91/cider):
+CIDEr evaluation code is taken from [Consensus-based Image Description Evaluation (CIDEr Code)](https://github.com/vrama91/cider).
+First download their github repo:
 ```bash
 !git clone https://github.com/vrama91/cider
 ```
-
 ## License
 [Apache-2.0 License](https://www.apache.org/licenses/LICENSE-2.0)
