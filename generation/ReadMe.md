@@ -100,6 +100,15 @@ python3 run_GPT2_freeflow.py -test_file ../data/E2_GPT_outp_props_freeflow_test.
 
 ### Setup
 
+#### STS-BERT
+We use the [semantic-text-similarity project](https://pypi.org/project/semantic-text-similarity/) to compute the STS-BERT scores. It is an easy-to-use interface to fine-tuned BERT models for computing semantic similarity between 2 sentences.
+
+Install this project using:
+```bash
+pip install semantic-text-similarity
+```
+The web-based STS Bert model is downloaded by the 'generation_eval.py' script. Use 'cpu' or 'gpu' according to your machine specs in this script.
+
 #### SPICE
 You will first need to download the [Stanford CoreNLP 3.6.0](https://stanfordnlp.github.io/CoreNLP/index.html) code and models for use by SPICE. To do this, run: 
 ```bash
