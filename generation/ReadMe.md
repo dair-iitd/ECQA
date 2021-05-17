@@ -122,5 +122,10 @@ First download their github repo:
 ```bash
 !git clone https://github.com/vrama91/cider
 ```
+
+#### Running the evaluation script
+```bash
+python generation_eval.py -i input_file
+```
 ## License
 [Apache-2.0 License](https://www.apache.org/licenses/LICENSE-2.0)
