@@ -100,11 +100,18 @@ python3 run_GPT2_freeflow.py -test_file ../data/E2_GPT_outp_props_freeflow_test.
 
 ### Setup
 
-1] You will first need to download the [Stanford CoreNLP 3.6.0](https://stanfordnlp.github.io/CoreNLP/index.html) code and models for use by SPICE. To do this, run: 
+#### SPICE
+You will first need to download the [Stanford CoreNLP 3.6.0](https://stanfordnlp.github.io/CoreNLP/index.html) code and models for use by SPICE. To do this, run: 
 ```bash
 ./get_stanford_models.sh
 ```
 Note: SPICE will try to create a cache of parsed sentences in ./spice/cache/. This dramatically speeds up repeated evaluations. The cache directory can be moved by setting 'CACHE_DIR' in ./spice. In the same file, caching can be turned off by removing the '-cache' argument to 'spice_cmd'.
+
+#### CIDEr
+First download the [github repo](https://github.com/vrama91/cider):
+```bash
+!git clone https://github.com/vrama91/cider
+```
 
 ## License
 [Apache-2.0 License](https://www.apache.org/licenses/LICENSE-2.0)
