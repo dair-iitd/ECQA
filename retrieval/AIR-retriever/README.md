@@ -1,5 +1,5 @@
 # AIR-retriever
-The AIR retriever code is taken from https://github.com/vikas95/AIR-retriever.git for Multi-Hop QA - ACL 2020 [Unsupervised Alignment-based Iterative Evidence Retrieval for Multi-hop Question Answering](https://arxiv.org/abs/2005.01218)
+The AIR retriever code is taken from https://github.com/vikas95/AIR-retriever.git for Multi-Hop QA - ACL 2020 paper: [Unsupervised Alignment-based Iterative Evidence Retrieval for Multi-hop Question Answering](https://arxiv.org/abs/2005.01218)
 
 ## Running Experiments:
 
@@ -8,4 +8,5 @@ The AIR retriever code is taken from https://github.com/vikas95/AIR-retriever.gi
 2] Running "python3 AIR_evidence_retrieval_scores.py" shows the justification selection performance of AIR and will generate the output file.
 
 3] Use the "retrieval_eval.py" script to generate the Recall, Precision and F1 scores for different metrics (STS-BERT, Spice, CIDEr, METEOR and ROUGE).
+
 "python3 retrievel_eval.py output_file ./E2_test.json"
