@@ -1,17 +1,11 @@
 # AIR-retriever
-AIR retriever for Multi-Hop QA - ACL 2020 [paper](https://arxiv.org/abs/2005.01218)
+The AIR retriever code is taken from https://github.com/vikas95/AIR-retriever.git for Multi-Hop QA - ACL 2020 [Unsupervised Alignment-based Iterative Evidence Retrieval for Multi-hop Question Answering](https://arxiv.org/abs/2005.01218)
 
 ## Running Experiments:
 
-1] Please download the MultiRC dataset from https://github.com/CogComp/multirc
-The train and dev sets are available in the above link.
+1] Download the GLoVe embeddings 'glove.6B.100d.txt' in this folder.
 
-2] Running "python3 AIR_evidence_retrieval_scores.py" shows the justification selection performance of AIR. Please change the directory of GLoVe embeddings (line 16 of the file) as per your GLoVe files. 
+2] Running "python3 AIR_evidence_retrieval_scores.py" shows the justification selection performance of AIR and will generate the output file.
 
-3] Running "python3 main_MultiRC_passages_from_topN_Iterative_alignments_PARALLEL_evidences.py" generates the train and dev files for the QA tasks with various parallel evidences. We had followed the binary classification approach for every candidate answer in the QA task (https://arxiv.org/abs/2005.01218), hence the files are in MRPC format which makes it easier to train any transformer based approach (RoBERTa, XLnet or BERT) from the huggingface library. 
-
-QA files in MRPC format can be downloaded from [here](https://drive.google.com/file/d/1hyMGTKCu_4LZir9VPPnsNqh05gYMD0aN/view?usp=sharing)
-
-QA files for QASC dataset in MCQA format can be downloaded from [here](https://drive.google.com/file/d/1O5ykOf0BlXUVOgKyWKv9_LJsUkpUv4iZ/view?usp=sharing)
-
-
+3] Use the "retrieval_eval.py" script to generate the Recall, Precision and F1 scores for different metrics (STS-BERT, Spice, CIDEr, METEOR and ROUGE).
+"python3 retrievel_eval.py output_file ./E2_test.json"
