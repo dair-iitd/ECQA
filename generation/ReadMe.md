@@ -137,6 +137,8 @@ elif self.source == 'res':
   sentences = sentences.encode('ascii', 'ignore').decode('ascii')
   final_tokenized_captions_for_index = []
 ```
+#### METEOR
+Follow meteor Readme for downloading one data file before evaluation. Use interactive notebook for calculating METEOR Scores.
 
 #### Running the evaluation script
 ```bash
