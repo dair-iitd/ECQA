@@ -122,6 +122,21 @@ First download their github repo:
 ```bash
 git clone https://github.com/vrama91/cider
 ```
+If you get unicode error, then go to the 'pyciderevalcap/tokenizer/ptbtokenizer.py' file, in the tokenize function of PTBtokenizer class, update the "prepare data for PTB Tokenizer" block  with this:
+```bash
+if self.source == 'gts':
+  image_id = [k for k, v in captions_for_image.items() for _ in range(len(v))]
+  sentences = '\n'.join([c['caption'].replace('\n', ' ') for k, v in captions_for_image.items() for c in v])
+  sentences = sentences.encode('ascii', 'ignore').decode('ascii')
+  final_tokenized_captions_for_image = {}
+
+elif self.source == 'res':
+  index = [i for i, v in enumerate(captions_for_image)]
+  image_id = [v["image_id"] for v in captions_for_image]
+  sentences = '\n'.join(v["caption"].replace('\n', ' ') for v in captions_for_image )
+  sentences = sentences.encode('ascii', 'ignore').decode('ascii')
+  final_tokenized_captions_for_index = []
+```
 
 #### Running the evaluation script
 ```bash
