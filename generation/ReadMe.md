@@ -120,7 +120,7 @@ Note: SPICE will try to create a cache of parsed sentences in ./spice/cache/. Th
 CIDEr evaluation code is taken from [Consensus-based Image Description Evaluation (CIDEr Code)](https://github.com/vrama91/cider).
 First download their github repo:
 ```bash
-!git clone https://github.com/vrama91/cider
+git clone https://github.com/vrama91/cider
 ```
 
 #### Running the evaluation script
