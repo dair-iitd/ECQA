@@ -19,6 +19,7 @@ def generate_data(df):
 	properties = []
 	free_flow = []
 	all_properties = []
+	wasted = 0
 
 	# need to handle modifiers like plural etc
 
@@ -50,7 +51,7 @@ def generate_data(df):
 			else:
 				correct.append(False)
 				props_raw = df['taskA_neg'][ind].splitlines()
-			props_cleaned = [property.lower().translate({ord(c): '' for c in "!@#$%^&*()[]{};:,./<>?\|`~-=_+"}) for property in props_raw if (property.strip() and len(property.split())<20)]
+			props_cleaned = [property.lower().translate({ord(c): '' for c in "!@#$%^&*()[]{};:,./<>?\|`~-=_+"}) for property in props_raw if (property.strip())]
 			found = False
 			for j in range(0,len(curr_set_options)):
 				if curr_option==curr_set_options[j]:
@@ -84,13 +85,13 @@ def generate_data(df):
 				free_flow.pop()
 				option.pop()
 				correct.pop()
+				wasted += 1
 			else:
 				properties.append(linked_props)
 				curr_set_options.append(curr_option)
 
 	all_properties = [prop.lower().translate({ord(c): '' for c in "!@#$%^&*()[]{};:,./<>?\|`~-=_+"}) for prop in all_properties if (prop.strip() and len(prop.split())<20)]	# removes empty lines
 	total = len(set(q_no))*5
-	wasted = len(set(q_no))*5 - len(q_no)
 	print('Total = ', total, ' Wasted Qs in E2 = ', wasted)
 	e2_data = {'q_no':  q_no, 'q_text': q_text, 'option': option, 'free_flow': free_flow,
 					'correct': correct, 'properties': properties, 'all_properties': all_properties }

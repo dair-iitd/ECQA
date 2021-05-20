@@ -76,7 +76,7 @@ python3 run_language_modeling_queries.py --output_dir=<path to save model> --mod
 
 ```bash
 cd text-generation
-python3 run_GPT2.py -test_file ../data/E2_GPT_test.json -pretrained_model ../language-modeling/queries/ -max_length 150 -model_type gpt2 -output_file gpt2_props_output.json
+python3 run_GPT2.py -test_file ../data/E2_GPT_test.json -pretrained_model <path to saved model> -max_length 150 -model_type gpt2 -output_file gpt2_props_output.json
 ```
 
 ## XGF-II
@@ -110,7 +110,7 @@ pip install semantic-text-similarity
 The web-based STS Bert model is downloaded by the 'generation_eval.py' script. Use 'cpu' or 'gpu' according to your machine specs in this script.
 
 #### SPICE
-You will first need to download the [Stanford CoreNLP 3.6.0](https://stanfordnlp.github.io/CoreNLP/index.html) code and models for use by SPICE. To do this, run: 
+You will first need to download the [Stanford CoreNLP 3.6.0](https://stanfordnlp.github.io/CoreNLP/index.html) code and models for use by SPICE. To do this, run:
 ```bash
 ./get_stanford_models.sh
 ```
