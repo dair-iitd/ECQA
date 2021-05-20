@@ -110,6 +110,10 @@ if __name__ == "__main__":
 	for idx in range(0,len(input_data)):
 		input_text = input_data[idx]
 		output_text = output_data[idx]
+		output_text = output_text.split()
+		if '<EOS>' in output_text:
+			output_text.remove('<BOP>')
+		output_text = ' '.join(output_text)
 
 		prompt_text = input_text
 		prefix = args.prefix if args.prefix else args.padding_text

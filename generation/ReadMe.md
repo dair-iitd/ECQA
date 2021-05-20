@@ -44,6 +44,7 @@ python3 run_language_modeling_queries.py --output_dir=<path to save model> --mod
 ```bash
 cd text-generation
 python3 run_GPT2.py -test_file ../data/E2_GPT_test.json -pretrained_model <path to saved model> -max_length 150 -model_type gpt2 -output_file gpt2_raw_output.json
+python3 GPT_json_output_parsing.py -input gpt2_raw_output.json -output gpt2_raw_output.json
 ```
 
 ## XGF-I
@@ -77,6 +78,7 @@ python3 run_language_modeling_queries.py --output_dir=<path to save model> --mod
 ```bash
 cd text-generation
 python3 run_GPT2.py -test_file ../data/E2_GPT_test.json -pretrained_model <path to saved model> -max_length 150 -model_type gpt2 -output_file gpt2_props_output.json
+python3 GPT_json_output_parsing.py -input gpt2_props_output.json -output gpt2_props_output.json
 ```
 
 ## XGF-II
