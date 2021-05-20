@@ -32,57 +32,6 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 directory = ''
 
 
-def evaluateBatch(model, data_loader, args, out_prefix=''):
-	model.eval()
-	avg_blue_score = 0.0
-	count = 0
-
-	output_save_dir = os.path.join(args.output_dir, directory)
-	pathlib.Path(output_save_dir).mkdir(parents=True, exist_ok=True)
-	output_filename = os.path.join(output_save_dir, out_prefix + args.output_file)
-
-	file = open(output_filename,'w', encoding='utf-8')
-	for input, target in data_loader:
-		batch_size = len(input)
-		generated = tokenizer.encode(input[0])
-		output_tokens = []
-		context = torch.tensor([generated], device=device)
-		past = None
-
-		for i in range(MAX_LENGTH):
-			with torch.no_grad():
-				output, past = model(context, past=past)
-			token = torch.argmax(output[..., -1, :])
-			output_tokens += [token.tolist()]
-			if (tokenizer.decode([token.tolist()])=='.'):
-				break
-			context = token.unsqueeze(0)
-
-		output_sequence = tokenizer.decode(output_tokens)
-
-		bleu_reference = [tokenizer.tokenize(target[0])]
-		bleu_candidate = tokenizer.tokenize(output_sequence)
-		score = sentence_bleu(bleu_reference, bleu_candidate)
-		# print(input[0] + output_sequence, flush=True)
-		lines = ['inp: '+input[0]+'\n', 'gold: '+target[0]+'\n', 'outp: '+output_sequence+'\n', '\n']
-		file.writelines(lines)
-		avg_blue_score += score
-		count += 1
-
-		# for index in range(batch_size):
-		# 	bleu_reference = [tokenizer.tokenize(text[index])]
-		# 	bleu_candidate = tokenizer.tokenize(output_sentences[index])
-		# 	score = sentence_bleu(bleu_reference, bleu_candidate)
-		# 	lines = ['inp: '+text[index]+'\n', 'outp: '+output_sentences[index]+'\n', '\n']
-		# 	file.writelines(lines)
-		# 	avg_blue_score += score
-		# 	count += 1
-
-	avg_blue_score /= count
-	file.close()
-	return avg_blue_score
-
-
 if __name__ == "__main__":
 
 	parser = argparse.ArgumentParser()
@@ -150,7 +99,8 @@ if __name__ == "__main__":
 
 	output_save_dir = os.path.join(args.output_dir, directory)
 	pathlib.Path(output_save_dir).mkdir(parents=True, exist_ok=True)
-	output_filename = os.path.join(output_save_dir, args.output_file)
+	# output_filename = os.path.join(output_save_dir, args.output_file)
+	output_filename = args.output_file
 
 	# file = open(output_filename,'w', encoding='utf-8')
 	inps = []

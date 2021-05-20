@@ -104,7 +104,8 @@ if __name__ == "__main__":
 
 	output_save_dir = os.path.join(args.output_dir, directory)
 	pathlib.Path(output_save_dir).mkdir(parents=True, exist_ok=True)
-	output_filename = os.path.join(output_save_dir, args.output_file)
+	# output_filename = os.path.join(output_save_dir, args.output_file)
+	output_filename = args.output_file
 
 	# file = open(output_filename,'w', encoding='utf-8')
 	inps = []
