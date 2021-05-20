@@ -112,7 +112,7 @@ if __name__ == "__main__":
 		output_text = output_data[idx]
 		output_text = output_text.split()
 		if '<EOS>' in output_text:
-			output_text.remove('<BOP>')
+			output_text.remove('<EOS>')
 		output_text = ' '.join(output_text)
 
 		prompt_text = input_text
