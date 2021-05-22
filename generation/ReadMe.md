@@ -143,8 +143,16 @@ elif self.source == 'res':
 Follow meteor Readme for downloading one data file before evaluation. Use interactive notebook for calculating METEOR Scores.
 
 #### Running the evaluation script
+For evaluation of property generation models (XGP and XGP-W), run the following command:
 ```bash
-python generation_eval.py -i input_file
+python generation_eval_props.py -i input_file
+For example: python generation_eval_props.py -i gpt2_props_output.json
 ```
+For evalution of free-flow generation models (XGF-I and XGF-II), run the following command:
+```bash
+python generation_eval_free_flow.py -i input_file
+For example: python generation_eval_free_flow.py -i gpt2_outp_props_freeflow_tuned_output.json
+```
+
 ## License
 [Apache-2.0 License](https://www.apache.org/licenses/LICENSE-2.0)
