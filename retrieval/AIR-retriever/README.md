@@ -9,4 +9,4 @@ The AIR retriever code is taken from https://github.com/vikas95/AIR-retriever.gi
 
 3] Use the "retrieval_eval.py" script to generate the Recall, Precision and F1 scores for different metrics (STS-BERT, Spice, CIDEr, METEOR and ROUGE). Before running this script, set up the spice and cider folders required for evaluation as specified in the generation folder's README.
 
-"python3 retrievel_eval.py output_file ./E2_test.json"
+"python3 retrievel_eval_AIR.py output_file ../data/E2_test.json"
