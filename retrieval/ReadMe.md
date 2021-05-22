@@ -63,5 +63,12 @@ python3 IR_sbert_multi_dump.py -embedding_size 512 -test -pretrained_model <path
 python3 IR_sbert_multi_dump.py -embedding_size 512 -test -test_omcs -pretrained_model <path to the pretrained model as explained above>
 ```
 
+## Evaluation
+Do the setup as specified in the generation README for evaluation before running the following command. This would evaluate the input_file for top-k approach where k = 3 for positive properties and k = 1 for negative properties.
+```bash
+python retrieval_eval.py -i input_file
+Example: python retrieval_eval.py -i 3_bm25_sets.json
+```
+
 ## License
 [Apache-2.0 License](https://www.apache.org/licenses/LICENSE-2.0)
