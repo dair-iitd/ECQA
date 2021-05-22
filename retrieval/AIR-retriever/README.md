@@ -11,7 +11,7 @@ The AIR retriever code is taken from https://github.com/vikas95/AIR-retriever.gi
 ```bash
 "python3 Compute_IDF.py"
 ```
-4] Set the path to the input and output files in 'AIR_evidence_retrieval_scores.py' in lines 49 and 50. For example: input_file_name = '../air_test.json' and output_file_name = 'air_test_single_chain.tsv'. Then run 
+4] Set the path to the input and output files in 'AIR_evidence_retrieval_scores.py' in lines 49 and 50. For example: input_file_name = '../air_test.json' and output_file_name = 'air_test_single_chain.tsv'. The output directory by default is './MultiRC_BM25_vs_POCC_justification_quality_score'. Then run 
 ```bash
 "python3 AIR_evidence_retrieval_scores.py" 
 ```
