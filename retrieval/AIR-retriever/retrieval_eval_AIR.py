@@ -231,8 +231,8 @@ def main():
       write_file2.write(new_line)
     write_file2.close()
 
-    f1 = name + '_meteor_test'
-    f2 = name + '_meteor_refs'
+#     f1 = name + '_meteor_test'
+#     f2 = name + '_meteor_refs'
     
     # meteor_scores = out('java -Xmx2G -jar meteor-1.5.jar ' + f1 + ' ' + f2 + ' -l en -norm -a data/paraphrase-en.gz -q')
     # # meteor_scores = os.system('java -Xmx2G -jar meteor-1.5.jar ' + f1 + ' ' + f2 + ' -l en -norm -a data/paraphrase-en.gz -q')
@@ -322,10 +322,10 @@ def main():
             bipartite_graph[i][j] = 1
           else:
             bipartite_graph[i][j] = 0
-          if (meteor_score >= meteor_threshold):
-            bipartite_graph_double_meteor[i][j] = 1
-          else:
-            bipartite_graph_double_meteor[i][j] = 0
+#           if (meteor_score >= meteor_threshold):
+#             bipartite_graph_double_meteor[i][j] = 1
+#           else:
+#             bipartite_graph_double_meteor[i][j] = 0
           if (rouge_score >= rouge_threshold):
             bipartite_graph_double_rouge[i][j] = 1
           else:
