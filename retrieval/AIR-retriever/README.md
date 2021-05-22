@@ -17,7 +17,7 @@ The AIR retriever code is taken from https://github.com/vikas95/AIR-retriever.gi
 ```
 to generate the output_file in the tsv format. 
 
-3] Use the "retrieval_eval_AIR.py" script to generate the Recall, Precision and F1 scores for different metrics (STS-BERT, Spice, CIDEr and ROUGE). Before running this script, set up the spice and cider folders required for evaluation as specified in the generation folder's README.
+5] Use the "retrieval_eval_AIR.py" script to generate the Recall, Precision and F1 scores for different metrics (STS-BERT, Spice, CIDEr and ROUGE). Before running this script, set up the spice and cider folders required for evaluation as specified in the generation folder's README.
 ```bash
 "python3 retrievel_eval_AIR.py -o output_file -t ../data/E2_test.json"
 For example: python3 retrievel_eval_AIR.py -o ./MultiRC_BM25_vs_POCC_justification_quality_score/air_test_single_chain.tsv -t ../data/E2_test.json
