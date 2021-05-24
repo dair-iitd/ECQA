@@ -98,9 +98,7 @@ cd text-generation
 python3 run_GPT2_freeflow.py -test_file ../data/E2_GPT_outp_props_freeflow_test.json -pretrained_model <path to saved model> -max_length 250 -model_type gpt2 -output_file gpt2_outp_props_freeflow_tuned_output.json
 ```
 
-## Evaluation
-
-### Setup
+## Evaluation Setup
 
 #### STS-BERT
 We use the [semantic-text-similarity project](https://pypi.org/project/semantic-text-similarity/) to compute the STS-BERT scores. It is an easy-to-use interface to fine-tuned BERT models for computing semantic similarity between 2 sentences.
@@ -142,7 +140,7 @@ elif self.source == 'res':
 #### METEOR
 Follow meteor Readme for downloading one data file before evaluation. Use interactive notebook for calculating METEOR Scores.
 
-#### Running the evaluation script
+## Evaluating Model Output
 For evaluation of property generation models (XGP and XGP-W), run the following command:
 ```bash
 python generation_eval_props.py -i input_file
