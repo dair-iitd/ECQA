@@ -22,6 +22,7 @@ if __name__ == "__main__":
 			corpus.extend(data['text'])
 
 	test_filenames = ['./data/E2_train.json', './data/E2_val.json', './data/E2_test.json']
+	outp_dict = ['train', 'val', 'test']
 	# test_filenames = ['./data/E2_test.json']
 	tokenized_corpus = [doc.split(" ") for doc in corpus]
 	top_k = 50
@@ -97,7 +98,7 @@ if __name__ == "__main__":
 			with open('10_'+filename, 'w') as f:
 				json.dump(df, f)
 
-		filename = str(filenum) + '.json'
+		filename = outp_dict[filenum] + '.json'
 		if args.test_omcs:
 			filename = 'omcs_' + filename
 		with open('air_bm25_'+filename, 'w') as jf:
