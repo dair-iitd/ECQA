@@ -63,7 +63,49 @@ python3 IR_sbert_multi_dump.py -embedding_size 512 -test -pretrained_model <path
 python3 IR_sbert_multi_dump.py -embedding_size 512 -test -test_omcs -pretrained_model <path to the pretrained model as explained above>
 ```
 
-## Evaluation
+## Evaluation Setup
+
+#### STS-BERT
+We use the [semantic-text-similarity project](https://pypi.org/project/semantic-text-similarity/) to compute the STS-BERT scores. It is an easy-to-use interface to fine-tuned BERT models for computing semantic similarity between 2 sentences.
+
+Install this project using:
+```bash
+pip install semantic-text-similarity
+```
+The web-based STS Bert model is downloaded by the 'generation_eval.py' script. Use 'cpu' or 'gpu' according to your machine specs in this script.
+
+#### SPICE
+You will first need to download the [Stanford CoreNLP 3.6.0](https://stanfordnlp.github.io/CoreNLP/index.html) code and models for use by SPICE. To do this, run:
+```bash
+./get_stanford_models.sh
+```
+Note: SPICE will try to create a cache of parsed sentences in ./spice/cache/. This dramatically speeds up repeated evaluations. The cache directory can be moved by setting 'CACHE_DIR' in ./spice. In the same file, caching can be turned off by removing the '-cache' argument to 'spice_cmd'.
+
+#### CIDEr
+CIDEr evaluation code is taken from [Consensus-based Image Description Evaluation (CIDEr Code)](https://github.com/vrama91/cider).
+First download their github repo:
+```bash
+git clone https://github.com/vrama91/cider
+```
+If you get unicode error, then go to the 'pyciderevalcap/tokenizer/ptbtokenizer.py' file, in the tokenize function of PTBtokenizer class, update the "prepare data for PTB Tokenizer" block  with this:
+```bash
+if self.source == 'gts':
+  image_id = [k for k, v in captions_for_image.items() for _ in range(len(v))]
+  sentences = '\n'.join([c['caption'].replace('\n', ' ') for k, v in captions_for_image.items() for c in v])
+  sentences = sentences.encode('ascii', 'ignore').decode('ascii')
+  final_tokenized_captions_for_image = {}
+
+elif self.source == 'res':
+  index = [i for i, v in enumerate(captions_for_image)]
+  image_id = [v["image_id"] for v in captions_for_image]
+  sentences = '\n'.join(v["caption"].replace('\n', ' ') for v in captions_for_image )
+  sentences = sentences.encode('ascii', 'ignore').decode('ascii')
+  final_tokenized_captions_for_index = []
+```
+#### METEOR
+Follow meteor Readme for downloading one data file before evaluation. Use interactive notebook for calculating METEOR Scores.
+
+## Evaluating Model Output
 Do the setup as specified in the generation README for evaluation before running the following command. This would evaluate the input_file for top-k approach where k = 3 for positive properties and k = 1 for negative properties.
 ```bash
 python retrieval_eval.py -i input_file
