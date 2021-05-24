@@ -5,6 +5,12 @@ The AIR retriever code is taken from https://github.com/vikas95/AIR-retriever.gi
 
 1] Download the GLoVe embeddings 'glove.6B.100d.txt' in this folder.
 
+2] Download 'wordnet' from nltk.
+```bash
+import nltk
+nltk.download('wordnet')
+```
+
 2] Modify the 'Compute_IDF.py' file line 61. This file computes the Inverse Document Frequency weights to 'MultiRC_IDF_vals.json' file. Give the input_files as a list with the list element being the location of the file to be tested by AIR-retriever. For example: input_files = \["../air_test.json"\]
 
 3] Run 
