@@ -35,7 +35,7 @@ The above release contains 5 zip files, having the following filename to model m
 Note that these zip files need to be unzipped and the result content directory needs to be used at the time of inference using our provided inference scripts.
 
 ## Citations
-Please consider citing this paper if you use the data:
+Please consider citing this paper if you use the code or models:
 ```
 @inproceedings{aggarwal2021ecqa,
   title={Explanations for CommonsenseQA: New Dataset and Models},
