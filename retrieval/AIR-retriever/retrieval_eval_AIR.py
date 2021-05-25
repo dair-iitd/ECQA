@@ -278,8 +278,8 @@ def main():
     rouge_threshold = 0.3
     counter = []
     for k in range(0, len(data['q_text'])):
-      if k % 500 == 0:
-        print(k)
+      # if k % 500 == 0:
+      #   print(k)
       true_props = data['property'][k]
       query = data['q_text'][k].replace('\n','')
       if data['correct'][k]:
@@ -506,8 +506,6 @@ def main():
 
       score0 = 0
       score_recall0 = 0
-      score_positive_recall0 = 0
-      score_negative_recall0 = 0
       score_precision0 = 0
       for i in range(len(true_props)):
         j = -1
@@ -522,12 +520,9 @@ def main():
           score_recall0 += 1
           score_precision0 += 1
           count += 1
-          counter.append(count)
-          sts_predictions_array2.append(sts_score)
           
         else:
           count += 1
-          sts_predictions_array2.append(0)
       
       sts_recall += score_recall0/len(true_props)
       sts_precision += score_precision0/len(retrieved_props)
