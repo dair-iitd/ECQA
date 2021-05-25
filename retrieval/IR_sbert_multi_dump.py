@@ -250,12 +250,12 @@ def dump_file_hitsets(model, queries, q_nums, correct, sentences, corpus, corpus
 	df = {'QNo':q_nums, 'Input':inps, 'Gold':golds, 'Output':outps_3, 'Correctness':correct}
 	with open('3_'+output_filename, 'w') as f:
 		json.dump(df, f)
-	df = {'QNo':q_nums, 'Input':inps, 'Gold':golds, 'Output':outps_5, 'Correctness':correct}
-	with open('5_'+output_filename, 'w') as f:
-		json.dump(df, f)
-	df = {'QNo':q_nums, 'Input':inps, 'Gold':golds, 'Output':outps_10, 'Correctness':correct}
-	with open('10_'+output_filename, 'w') as f:
-		json.dump(df, f)
+	# df = {'QNo':q_nums, 'Input':inps, 'Gold':golds, 'Output':outps_5, 'Correctness':correct}
+	# with open('5_'+output_filename, 'w') as f:
+	# 	json.dump(df, f)
+	# df = {'QNo':q_nums, 'Input':inps, 'Gold':golds, 'Output':outps_10, 'Correctness':correct}
+	# with open('10_'+output_filename, 'w') as f:
+	# 	json.dump(df, f)
 
 
 
@@ -320,8 +320,8 @@ if __name__ == "__main__":
 		if args.test_omcs:
 			output_filename = 'omcs_' + args.dump_file
 			dump_file_hitsets(model, queries, q_nums, correct, test_sentences_all, corpus, corpus_embeddings, output_filename)
-			dump_file_air(model, train_file, './air_omcs_train.json', corpus, corpus_embeddings)
-			dump_file_air(model, val_file, './air_omcs_val.json', corpus, corpus_embeddings)
+			# dump_file_air(model, train_file, './air_omcs_train.json', corpus, corpus_embeddings)
+			# dump_file_air(model, val_file, './air_omcs_val.json', corpus, corpus_embeddings)
 			dump_file_air(model, test_file, './air_omcs_test.json', corpus, corpus_embeddings)
 			exit(0)
 
@@ -335,8 +335,8 @@ if __name__ == "__main__":
 		print("Test hits@5 score = ", hitset5)
 		print("Test hits@10 score = ", hitset10)
 
-		dump_file_air(model, train_file, './air_train.json', corpus, corpus_embeddings)
-		dump_file_air(model, val_file, './air_val.json', corpus, corpus_embeddings)
+		# dump_file_air(model, train_file, './air_train.json', corpus, corpus_embeddings)
+		# dump_file_air(model, val_file, './air_val.json', corpus, corpus_embeddings)
 		dump_file_air(model, test_file, './air_test.json', corpus, corpus_embeddings)
 
 		exit(0)

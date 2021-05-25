@@ -38,44 +38,43 @@ if __name__ == "__main__":
 			outps_10 = []
 			q_nums = []
 			correct = []
-		with open(filename) as f:
-			data = json.load(f)
-		num_samples = len(data['q_text'])
-		for i in range(num_samples):
-			air_instance = {}
-			air_instance['id'] = data['q_no'][i]
-			air_instance['paragraph'] = {}
+			with open(filename) as f:
+				data = json.load(f)
+			num_samples = len(data['q_text'])
+			for i in range(num_samples):
+				air_instance = {}
+				air_instance['id'] = data['q_no'][i]
+				air_instance['paragraph'] = {}
 
-			query = data['q_text'][i]
-			if data['correct'][i]:
-				query += ' ' + data['option'][i]
-				answer_text = data['option'][i]
-			else:
-				query += ' not ' + data['option'][i]
-				answer_text = 'not ' + data['option'][i]
-			properties = data['property'][i]
-			tokenized_query = query.split(" ")
-			results = bm25.get_top_n(tokenized_query, corpus, n=top_k)
-			used_sents = []
-			air_para_text = ''
-			for (idx, sent) in enumerate(results):
-				air_para_text += '<b>Sent ' + str(idx+1) + ': </b>' + sent + '<br>'
-				if sent in properties:
-					used_sents.append(idx)
+				query = data['q_text'][i]
+				if data['correct'][i]:
+					query += ' ' + data['option'][i]
+					answer_text = data['option'][i]
+				else:
+					query += ' not ' + data['option'][i]
+					answer_text = 'not ' + data['option'][i]
+				properties = data['property'][i]
+				tokenized_query = query.split(" ")
+				results = bm25.get_top_n(tokenized_query, corpus, n=top_k)
+				used_sents = []
+				air_para_text = ''
+				for (idx, sent) in enumerate(results):
+					air_para_text += '<b>Sent ' + str(idx+1) + ': </b>' + sent + '<br>'
+					if sent in properties:
+						used_sents.append(idx)
 
-			air_instance['paragraph']['text'] = air_para_text
-			air_para_question = {}
-			air_para_question['question'] = data['q_text'][i]
-			air_para_question['sentences_used'] = used_sents
-			air_para_question['idx'] = 0
-			air_para_question['multisent'] = True
-			air_answer = {'text': answer_text, 'isAnswer': True, 'Correctness':data['correct'][i], 'scores':{}}
-			air_para_question['answers'] = [air_answer]
-			air_instance['paragraph']['questions'] = [air_para_question]
+				air_instance['paragraph']['text'] = air_para_text
+				air_para_question = {}
+				air_para_question['question'] = data['q_text'][i]
+				air_para_question['sentences_used'] = used_sents
+				air_para_question['idx'] = 0
+				air_para_question['multisent'] = True
+				air_answer = {'text': answer_text, 'isAnswer': True, 'Correctness':data['correct'][i], 'scores':{}}
+				air_para_question['answers'] = [air_answer]
+				air_instance['paragraph']['questions'] = [air_para_question]
 
-			air_data.append(air_instance)
+				air_data.append(air_instance)
 
-			if filenum==2:
 				q_nums.append(data['q_no'][i])
 				inps.append(query)
 				golds.append(properties)
@@ -91,15 +90,15 @@ if __name__ == "__main__":
 			df = {'QNo':q_nums, 'Input':inps, 'Gold':golds, 'Output':outps_3, 'Correctness':correct}
 			with open('3_'+filename, 'w') as f:
 				json.dump(df, f)
-			df = {'QNo':q_nums, 'Input':inps, 'Gold':golds, 'Output':outps_5, 'Correctness':correct}
-			with open('5_'+filename, 'w') as f:
-				json.dump(df, f)
-			df = {'QNo':q_nums, 'Input':inps, 'Gold':golds, 'Output':outps_10, 'Correctness':correct}
-			with open('10_'+filename, 'w') as f:
-				json.dump(df, f)
+			# df = {'QNo':q_nums, 'Input':inps, 'Gold':golds, 'Output':outps_5, 'Correctness':correct}
+			# with open('5_'+filename, 'w') as f:
+			# 	json.dump(df, f)
+			# df = {'QNo':q_nums, 'Input':inps, 'Gold':golds, 'Output':outps_10, 'Correctness':correct}
+			# with open('10_'+filename, 'w') as f:
+			# 	json.dump(df, f)
 
-		filename = outp_dict[filenum] + '.json'
-		if args.test_omcs:
-			filename = 'omcs_' + filename
-		with open('air_bm25_'+filename, 'w') as jf:
-			json.dump({'data': air_data}, jf)
+			filename = outp_dict[filenum] + '.json'
+			if args.test_omcs:
+				filename = 'omcs_' + filename
+			with open('air_bm25_'+filename, 'w') as jf:
+				json.dump({'data': air_data}, jf)
