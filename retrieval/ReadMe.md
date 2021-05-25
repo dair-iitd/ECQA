@@ -25,7 +25,7 @@ python3 ED_omcs_data_gen.py
 If you wanna run the experiments with the train, validation and test splits used by us (which excluded certain 32 ambiguous tagged questions), then run the following commands -
 ```bash
 cd data
-E2_data_generator_author_split.py
+python3 E2_data_generator_author_split.py
 ```
 
 If you want to use a random 70-10-20 train-dev-test split from the total dataset of 10,962 annotated samples, then run the following commands -
