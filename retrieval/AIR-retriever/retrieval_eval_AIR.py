@@ -264,9 +264,9 @@ def main():
     cider_recall = 0.0
     cider_precision = 0.0
     cider_fscore = 0.0
-    meteor_recall = 0.0
-    meteor_precision = 0.0
-    meteor_fscore = 0.0
+    # meteor_recall = 0.0
+    # meteor_precision = 0.0
+    # meteor_fscore = 0.0
     rouge_recall = 0.0
     rouge_precision = 0.0
     rouge_fscore = 0.0
@@ -305,13 +305,13 @@ def main():
       correctness = data['correct'][k]
       bipartite_graph = np.zeros((len(true_props), len(retrieved_props)))
       bipartite_graph_double_spice = np.zeros((len(true_props), len(retrieved_props)))
-      bipartite_graph_double_meteor = np.zeros((len(true_props), len(retrieved_props)))
+      # bipartite_graph_double_meteor = np.zeros((len(true_props), len(retrieved_props)))
       bipartite_graph_double_rouge = np.zeros((len(true_props), len(retrieved_props)))
       
       for i in range(len(true_props)):
         for j in range(len(retrieved_props)):
           cider_score = cider_output['CIDEr'][count1]
-          meteor_score = meteor_scores[count1]
+          # meteor_score = meteor_scores[count1]
           rouge_score = rouge_scores[1][count1]
           spice_score = spice_output[count1]['scores']['All']['f']
           count1 += 1
@@ -323,10 +323,10 @@ def main():
             bipartite_graph[i][j] = 1
           else:
             bipartite_graph[i][j] = 0
-          if (meteor_score >= meteor_threshold):
-            bipartite_graph_double_meteor[i][j] = 1
-          else:
-            bipartite_graph_double_meteor[i][j] = 0
+          # if (meteor_score >= meteor_threshold):
+          #   bipartite_graph_double_meteor[i][j] = 1
+          # else:
+          #   bipartite_graph_double_meteor[i][j] = 0
           if (rouge_score >= rouge_threshold):
             bipartite_graph_double_rouge[i][j] = 1
           else:
@@ -386,31 +386,31 @@ def main():
       if (a2+b2 != 0):
         cider_fscore += 2*a2*b2/(a2+b2)
 
-      g = GFG(bipartite_graph_double_meteor) 
-      number, division_list = g.maxBPM()
+      # g = GFG(bipartite_graph_double_meteor) 
+      # number, division_list = g.maxBPM()
       
       l1 = true_props
       l2 = retrieved_props
-      score_recall3 = 0
-      score_precision3 = 0
-      for i in range(len(l1)):
-        j = -1
-        for k in range(len(division_list)):
-          if (division_list[k] == i):
-            j = k
-            break
-        if (j != -1):
-          score_recall3 += 1
-          score_precision3 += 1
-          count += 1 
-        else:
-          count += 1
-      meteor_recall += score_recall3/len(l1)
-      meteor_precision += score_precision3/len(l2)
-      a2 = score_recall3/len(l1)
-      b2 = score_precision3/len(l2)
-      if (a2+b2 != 0):
-        meteor_fscore += 2*a2*b2/(a2+b2)
+      # score_recall3 = 0
+      # score_precision3 = 0
+      # for i in range(len(l1)):
+      #   j = -1
+      #   for k in range(len(division_list)):
+      #     if (division_list[k] == i):
+      #       j = k
+      #       break
+      #   if (j != -1):
+      #     score_recall3 += 1
+      #     score_precision3 += 1
+      #     count += 1 
+      #   else:
+      #     count += 1
+      # meteor_recall += score_recall3/len(l1)
+      # meteor_precision += score_precision3/len(l2)
+      # a2 = score_recall3/len(l1)
+      # b2 = score_precision3/len(l2)
+      # if (a2+b2 != 0):
+      #   meteor_fscore += 2*a2*b2/(a2+b2)
 
       g = GFG(bipartite_graph_double_rouge) 
       number, division_list = g.maxBPM()
@@ -447,10 +447,10 @@ def main():
     print(cider_recall/x)
     print(cider_precision/x)
     print(cider_fscore/x)
-    print("METEOR==============")
-    print(meteor_recall/x)
-    print(meteor_precision/x)
-    print(meteor_fscore/x)
+    # print("METEOR==============")
+    # print(meteor_recall/x)
+    # print(meteor_precision/x)
+    # print(meteor_fscore/x)
     print("ROUGE==============")
     print(rouge_recall/x)
     print(rouge_precision/x)
