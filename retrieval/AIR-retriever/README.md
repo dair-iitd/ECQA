@@ -22,9 +22,20 @@ For example: python3 Compute_IDF.py -i ../air_test.json
 python3 AIR_evidence_retrieval_scores.py -i input_file -o output_file
 For example: python3 AIR_evidence_retrieval_scores.py -i ../air_test.json -o air_test_output.tsv
 ```
+## Evaluation
 
-4] Use the "retrieval_eval_AIR.py" script to generate the Recall, Precision and F1 scores for different metrics (STS-BERT, Spice, CIDEr and ROUGE). Before running this script, set up the spice and cider folders required for evaluation as specified in the generation folder's README.
+### Gold corpus
+
+4] Use the "retrieval_eval_AIR_gold.py" script to generate the Exact Recall, Precision and F1 scores.
+```bash
+python3 retrievel_eval_AIR_gold.py -o output_file -t ../data/E2_test.json
+For example: python3 retrievel_eval_AIR_gold.py -o ./MultiRC_BM25_vs_POCC_justification_quality_score/air_test_output.tsv -t ../data/E2_test.json
+```
+
+### Silver corpus
+
+4] Use the "retrieval_eval_AIR.py" script to generate the Recall, Precision and F1 scores for different metrics (STS-BERT, Spice, CIDEr and ROUGE). Before running this script, set up all the folders required for evaluation as specified in the generation folder's README.
 ```bash
 python3 retrievel_eval_AIR.py -o output_file -t ../data/E2_test.json
-For example: python3 retrievel_eval_AIR.py -o ./MultiRC_BM25_vs_POCC_justification_quality_score/air_test_output.tsv -t ../data/E2_test.json
+For example: python3 retrievel_eval_AIR.py -o ./MultiRC_BM25_vs_POCC_justification_quality_score/air_omcs_test_output.tsv -t ../data/E2_test.json
 ```
