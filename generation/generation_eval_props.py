@@ -249,7 +249,7 @@ def main():
     #   if (k % 500 == 0):
     #     print(k)
       l1 = data["Gold"][k]
-      l2 = data["GPT2_Output"][k]
+      l2 = data["Output"][k]
       
       bipartite_graph = np.zeros((len(l1), len(l2)))
       bipartite_graph_double_spice = np.zeros((len(l1), len(l2)))

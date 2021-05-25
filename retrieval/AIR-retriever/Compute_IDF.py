@@ -1,3 +1,5 @@
+import argparse
+
 import math, json
 from Preprocess_ARC import Preprocess_QA_sentences
 
@@ -57,34 +59,45 @@ def Write_IDF_vals(All_words, All_sentences, file_name):
         json.dump(IDF, outfile)
 
 
+parser = argparse.ArgumentParser(description="Compute IDF weights")
+parser.add_argument("-i", "--input", required=True)
+#parser.add_argument('-o', '--output', required=True)
+args = parser.parse_args()
+
+input_file = str(args.input)
 # input_files =  ["train_456-fixedIds.json", "dev_83-fixedIds.json"]
-input_files =  ["./Files/air_test.json", "./Files/air_val.json"]
+input_files =  [input_file]
 
-All_KB_passages = []
-Vocab = []
+def main():
+	All_KB_passages = []
+	Vocab = []
 
-for input_file_name in input_files:
-    print(input_file_name)
-    with open(input_file_name) as json_file:
-        json_data = json.load(json_file)
+	for input_file_name in input_files:
+	    print(input_file_name)
+	    with open(input_file_name) as json_file:
+	        json_data = json.load(json_file)
 
-        for para_ques in json_data["data"]:
-            current_KB_passage_sents = []
-            num_of_justifications = para_ques['paragraph']["text"].count("<br>")
-            # print (num_of_justifications, para_ques['paragraph']["text"])
-            for i in range(25):
-                start_index = para_ques['paragraph']["text"].find("<b>Sent "+str(i+1)+ ": </b>") + len("<b>Sent "+str(i+1)+ ": </b>")
-                end_index = para_ques['paragraph']["text"].find("<b>Sent "+str(i+2)+ ": </b>")
-                if i == num_of_justifications-1:
-                    current_KB_passage_sents.append(para_ques['paragraph']["text"][start_index:end_index].replace("<br", ""))
-                else:
-                    current_KB_passage_sents.append(para_ques['paragraph']["text"][start_index:end_index].replace("<br>", ""))
+	        for para_ques in json_data["data"]:
+	            current_KB_passage_sents = []
+	            num_of_justifications = para_ques['paragraph']["text"].count("<br>")
+	            # print (num_of_justifications, para_ques['paragraph']["text"])
+	            for i in range(25):
+	                start_index = para_ques['paragraph']["text"].find("<b>Sent "+str(i+1)+ ": </b>") + len("<b>Sent "+str(i+1)+ ": </b>")
+	                end_index = para_ques['paragraph']["text"].find("<b>Sent "+str(i+2)+ ": </b>")
+	                if i == num_of_justifications-1:
+	                    current_KB_passage_sents.append(para_ques['paragraph']["text"][start_index:end_index].replace("<br", ""))
+	                else:
+	                    current_KB_passage_sents.append(para_ques['paragraph']["text"][start_index:end_index].replace("<br>", ""))
 
-            All_KB_passages+=current_KB_passage_sents
-            for sent1 in current_KB_passage_sents:
-                Vocab += Preprocess_QA_sentences(sent1, 0)
+	            All_KB_passages+=current_KB_passage_sents
+	            for sent1 in current_KB_passage_sents:
+	                Vocab += Preprocess_QA_sentences(sent1, 0)
 
-Vocab = list(set(Vocab))
+	Vocab = list(set(Vocab))
 
 
-Write_IDF_vals(Vocab, All_KB_passages, "MultiRC_IDF_vals.json")
+	Write_IDF_vals(Vocab, All_KB_passages, "MultiRC_IDF_vals.json")
+
+
+if __name__ == '__main__':
+    main()

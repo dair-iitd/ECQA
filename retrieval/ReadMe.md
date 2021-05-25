@@ -74,10 +74,19 @@ cd ../generation
 Now follow the evaluation steps mentioned [here](https://github.com/dair-iitd/ECQA/tree/master/generation#evaluation-setup) to set up the environment to run evaluation scripts. You need not repeat this step if you have already set up the environment while running generation experiments.
 
 ## Evaluating Model Output
-Do the setup as specified in the generation README for evaluation before running the following command. This would evaluate the input_file for top-k approach where k = 3 for positive properties and k = 1 for negative properties.
+#### Gold corpus
+Run the following command to evaluate the input_file for top-k approach where k = 3 for positive properties and k = 1 for negative properties for gold corpus. Results would be the Exact Recall, Precision and F scores.
+```bash
+python retrieval_eval_gold.py -i input_file
+Example: python retrieval_eval_gold.py -i 3_dx_sets.json
+```
+
+#### Silver corpus
+Setup the all the folders as described in README of generation section for evaluation before running following command.
+This would evaluate the input_file for top-k approach where k = 3 for positive properties and k = 1 for negative properties for silver corpus. Results would be the Recall, Precision and F scores for different metrics (STS-BERT score, SPICE, CIDEr and ROUGE) using the bipartite matching as described in the paper.
 ```bash
 python retrieval_eval.py -i input_file
-Example: python retrieval_eval.py -i 3_bm25_sets.json
+Example: python retrieval_eval.py -i 3_omcs_dx_sets.json
 ```
 
 ## License
