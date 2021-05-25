@@ -249,8 +249,14 @@ def main():
     for k in range(len(data["Input"])):
     #   if (k % 500 == 0):
     #     print(k)
-      l1 = data["Gold"][k]
-      l2 = data["GPT2_Output"][k]
+	  l1 = data["Gold"][k]		
+	  # l2 = data["Output"][k]
+	  correctness = data["Correctness"][k]
+	  # top-k policy where k=3 for positive and k=1 for negative
+	  if not correctness:
+	    l2 = [data["Output"][k][0]]
+	  else:
+	    l2 = data["Output"][k]
       
       bipartite_graph = np.zeros((len(l1), len(l2)))
       bipartite_graph_double_spice = np.zeros((len(l1), len(l2)))
