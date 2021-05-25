@@ -6,10 +6,13 @@ This section of the repository contains the instructions to preprocess the data 
 
 First download the [OMCS Corpus file ](https://s3.amazonaws.com/conceptnet/downloads/2018/omcs-sentences-more.txt), which we refer to as the silver corpus, and paste  it in the data directory of the current root.
 
-Obtain the final explanations data file, glued up with CQA data as mentioned in the [Data Section of the repositry](https://github.com/ShouryaAggarwal/Explanations-for-CommonSenseQA/tree/master/data), and paste in the data directory of the current root.
+Make sure you have the following csv data files, pasted in the data directory of the current root.
 
-```bash
-cp ../data/cqa_data.csv ./data/
+```
+cqa_data.csv
+cqa_data_train.csv
+cqa_data_val.csv
+cqa_data_test.csv
 ```
 
 Then run the following commands to generate the processed data for training and running inference on the models.
