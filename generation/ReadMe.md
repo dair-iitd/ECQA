@@ -114,15 +114,15 @@ You will first need to download the [Stanford CoreNLP 3.6.0](https://stanfordnlp
 ```bash
 ./get_stanford_models.sh
 ```
-Note: SPICE will try to create a cache of parsed sentences in ./spice/cache/. This dramatically speeds up repeated evaluations. The cache directory can be moved by setting 'CACHE_DIR' in ./spice. In the same file, caching can be turned off by removing the '-cache' argument to 'spice_cmd'.
+Note: SPICE will try to create a cache of parsed sentences in ./spice/cache/. This dramatically speeds up repeated evaluations. Caching can be turned off by removing the '-cache' argument to 'spice_cmd' in all the evaluation scripts. 
 
 #### CIDEr
 CIDEr evaluation code is taken from [Consensus-based Image Description Evaluation (CIDEr Code)](https://github.com/vrama91/cider).
-First download their github repo:
+First clone their github repo in this folder:
 ```bash
 git clone https://github.com/vrama91/cider
 ```
-If you get unicode error, then go to the 'pyciderevalcap/tokenizer/ptbtokenizer.py' file, in the tokenize function of PTBtokenizer class, update the "prepare data for PTB Tokenizer" block  with this:
+During ruuning the evaluaton scripts, if you get unicode error, then go to the 'pyciderevalcap/tokenizer/ptbtokenizer.py' file in the cider folder. Then, in the tokenize function of PTBtokenizer class, update the "prepare data for PTB Tokenizer" block  with this code:
 ```bash
 if self.source == 'gts':
   image_id = [k for k, v in captions_for_image.items() for _ in range(len(v))]
@@ -144,12 +144,12 @@ Follow meteor Readme for downloading one data file before evaluation. Use intera
 For evaluation of property generation models (XGP and XGP-W), run the following command:
 ```bash
 python generation_eval_props.py -i input_file
-For example: python generation_eval_props.py -i gpt2_props_output.json
+For example: python generation_eval_props.py -i ./text-generation/gpt2_props_output.json
 ```
 For evalution of free-flow generation models (XGF-I and XGF-II), run the following command:
 ```bash
 python generation_eval_free_flow.py -i input_file
-For example: python generation_eval_free_flow.py -i gpt2_outp_props_freeflow_tuned_output.json
+For example: python generation_eval_free_flow.py -i ./text-generation/gpt2_outp_props_freeflow_tuned_output.json
 ```
 
 ## License
