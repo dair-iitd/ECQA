@@ -122,7 +122,7 @@ First clone their github repo in this folder:
 ```bash
 git clone https://github.com/vrama91/cider
 ```
-During ruuning the evaluaton scripts, if you get unicode error, then go to the 'pyciderevalcap/tokenizer/ptbtokenizer.py' file in the cider folder. Then, in the tokenize function of PTBtokenizer class, update the "prepare data for PTB Tokenizer" block  with this code:
+During running the evaluaton scripts, if you get a unicode error because of CIDEr, then go to the 'pyciderevalcap/tokenizer/ptbtokenizer.py' file in the cider folder. And in the tokenize function of PTBtokenizer class, update the "prepare data for PTB Tokenizer" block  with this code:
 ```bash
 if self.source == 'gts':
   image_id = [k for k, v in captions_for_image.items() for _ in range(len(v))]
