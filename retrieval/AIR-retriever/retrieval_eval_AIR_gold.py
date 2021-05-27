@@ -88,9 +88,9 @@ def main():
     recall /= count
     f_score /= count
     print("Exact score============")
-    print(recall)
-    print(precision)
-    print(f_score)
+    print('Recall: ', recall)
+    print('Precision: ', precision)
+    print('F1 Score: ', f_score)
 
 if __name__ == '__main__':
     main()

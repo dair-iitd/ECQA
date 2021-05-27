@@ -244,7 +244,12 @@ def main():
     #in spice directory
     f1 = 'spice_' + name + '.json'
     f2 = 'spice_' + name + '_output.json'  
-    os.system('java -Xmx8G -jar spice-1.0.jar ' + f1 + ' -cache ./cache2 -out ' + f2)
+    cwd = os.path.abspath('')
+    cache_dir=os.path.join(cwd, 'cache')
+    if not os.path.exists(cache_dir):
+      os.makedirs(cache_dir)
+    os.system('java -Xmx8G -jar spice-1.0.jar ' + f1 + ' -cache ./cache -out ' + f2)
+
 
 
     file2 = open('./spice_' + name + '_output.json')
@@ -440,21 +445,21 @@ def main():
     # print(len(counter))
     x = len(data["q_text"])
     print("SPICE==============")
-    print(spice_recall/x)
-    print(spice_precision/x)
-    print(spice_fscore/x)
+    print('Recall: ', spice_recall/x)
+    print('Precision: ', spice_precision/x)
+    print('F1 Score: ', spice_fscore/x)
     print("CIDEr==============")
-    print(cider_recall/x)
-    print(cider_precision/x)
-    print(cider_fscore/x)
+    print('Recall: ', cider_recall/x)
+    print('Precision: ', cider_precision/x)
+    print('F1 Score: ', cider_fscore/x)
     # print("METEOR==============")
     # print(meteor_recall/x)
     # print(meteor_precision/x)
     # print(meteor_fscore/x)
     print("ROUGE==============")
-    print(rouge_recall/x)
-    print(rouge_precision/x)
-    print(rouge_fscore/x)
+    print('Recall: ', rouge_recall/x)
+    print('Precision: ', rouge_precision/x)
+    print('F1 Score: ', rouge_fscore/x)
         
     
     # STS-BERT score
@@ -533,9 +538,9 @@ def main():
 
     x = len(data["q_text"])
     print("STS==============")
-    print(sts_recall/x)
-    print(sts_precision/x)
-    print(sts_fscore/x)
+    print('Recall: ', sts_recall/x)
+    print('Precision: ', sts_precision/x)
+    print('F1 Score: ', sts_fscore/x)
 
 if __name__ == '__main__':
     main()
