@@ -144,12 +144,16 @@ Follow meteor Readme for downloading one data file before evaluation. Use intera
 For evaluation of property generation models (XGP and XGP-W), run the following command:
 ```bash
 python generation_eval_props.py -i input_file
-For example: python generation_eval_props.py -i ./text-generation/gpt2_props_output.json
+For example: 
+For XGP, run this: python generation_eval_props.py -i ./text-generation/gpt2_props_output.json
+For XGP-W, run this: python generation_eval_props.py -i ./text-generation/gpt2_raw_output.json
 ```
 For evalution of free-flow generation models (XGF-I and XGF-II), run the following command:
 ```bash
 python generation_eval_free_flow.py -i input_file
-For example: python generation_eval_free_flow.py -i ./text-generation/gpt2_outp_props_freeflow_tuned_output.json
+For example: 
+For XGF-II, run this: python generation_eval_free_flow.py -i ./text-generation/gpt2_outp_props_freeflow_tuned_output.json
+For XGF-I, run this: python generation_eval_free_flow.py -i ./text-generation/gpt2_raw_freeflow_output.json
 ```
 
 ## License
