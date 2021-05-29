@@ -209,7 +209,11 @@ def main():
     #in spice directory
     f1 = 'spice_' + name + '.json'
     f2 = 'spice_' + name + '_output.json'  
-    os.system('java -Xmx8G -jar spice-1.0.jar ' + f1 + ' -cache ./cache2 -out ' + f2)
+    cwd = os.path.abspath('')
+    cache_dir=os.path.join(cwd, 'cache')
+    if not os.path.exists(cache_dir):
+      os.makedirs(cache_dir)
+    os.system('java -Xmx8G -jar spice-1.0.jar ' + f1 + ' -cache ./cache -out ' + f2)
 
 
     file2 = open('./spice_' + name + '_output.json')
@@ -240,18 +244,18 @@ def main():
       rouge_predictions_array.append(rouge_scores[1][k])
 
     print("SPICE==============")
-    print(np.average(spice_predictions_array))
+    print('Average: ', np.average(spice_predictions_array))
     print("CIDEr==============")
-    print(np.average(cider_predictions_array)/10)
+    print('Average: ', np.average(cider_predictions_array)/10)
     # print("METEOR==============")
     # print(np.average(meteor_predictions_array))
     print("ROUGE==============")
-    print(np.average(rouge_predictions_array))
+    print('Average: ', np.average(rouge_predictions_array))
     
     
     print("STS-BERT==============")
     sts_bert_output = [web_model.predict([(data['gold'][i], data['output'][i])])[0] for i in range(len(data['input']))]
-    print(np.average(sts_bert_output)/5)
+    print('Average: ', np.average(sts_bert_output)/5)
 
 if __name__ == '__main__':
     main()

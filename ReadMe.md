@@ -1,4 +1,4 @@
-# Explanations for CommonSenseQA: Code And Models
+# Explanations for CommonsenseQA: Code And Models
 
 This repository contains the publicly released code for the experimentation section of the Explanations for CommonsenseQA paper, presented at ACL-IJCNLP 2021. There are two subdirectories, ```retrieval``` and ```generation```, corresponding to the Section 5 and Section 6 respectively, in our ACL paper. These two sections have their separate ReadMe files intructing on how to train and run inference with trained models.
 
