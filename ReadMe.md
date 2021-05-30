@@ -44,7 +44,7 @@ Note that these zip files need to be unzipped and the result content directory n
 Please consider citing this paper if you use the code or models:
 ```
 @inproceedings{aggarwal2021ecqa,
-  title={Explanations for CommonsenseQA: New Dataset and Models},
+  title={{E}xplanations for {C}ommonsense{QA}: {N}ew {D}ataset and {M}odels},
   author={Shourya Aggarwal, Divyanshu Mandowara, Vishwajeet Agrawal, Dinesh Khandelwal, Parag Singla, Dinesh Garg},
   booktitle={The 59th Annual Meeting of the Association for Computational Linguistics (ACL)},
   year={2021}
