@@ -16,9 +16,6 @@ nltk.download('wordnet')
 python3 Compute_IDF.py -i input_file
 For example: 
 For Ours + AIR + Gold corpus: python3 Compute_IDF.py -i ../air_test.json
-For Ours + AIR + Silver corpus: python3 Compute_IDF.py -i ../air_omcs_test.json
-For BM25 + AIR + Gold corpus: python3 Compute_IDF.py -i ../air_bm25_test.json
-For BM25 + AIR + Silver corpus: python3 Compute_IDF.py -i ../air_bm25_omcs_test.json
 ```
 
 3] Run AIR_evidence_retrieval_scores.py file with the input file as the file to be tested by AIR-retriever and output file to be in tsv format. The output directory is ./MultiRC_BM25_vs_POCC_justification_quality_score/ 
@@ -26,9 +23,6 @@ For BM25 + AIR + Silver corpus: python3 Compute_IDF.py -i ../air_bm25_omcs_test.
 python3 AIR_evidence_retrieval_scores.py -i input_file -o output_file
 For example: 
 For Ours + AIR + Gold corpus: python3 AIR_evidence_retrieval_scores.py -i ../air_test.json -o air_test_output.tsv
-For Ours + AIR + Silver corpus: python3 AIR_evidence_retrieval_scores.py -i ../air_omcs_test.json -o air_omcs_test_output.tsv
-For BM25 + AIR + Gold corpus: python3 AIR_evidence_retrieval_scores.py -i ../air_bm25_test.json -o air_bm25_test_output.tsv
-For BM25 + AIR + Silver corpus: python3 AIR_evidence_retrieval_scores.py -i ../air_bm25_omcs_test.json -o air_bm25_omcs_test_output.tsv
 ```
 ## Evaluation
 
@@ -38,8 +32,7 @@ For BM25 + AIR + Silver corpus: python3 AIR_evidence_retrieval_scores.py -i ../a
 ```bash
 python3 retrievel_eval_AIR_gold.py -o output_file -t ../data/E2_test.json
 For example: 
-For Ours + AIR approach, run this: python3 retrievel_eval_AIR_gold.py -o ./MultiRC_BM25_vs_POCC_justification_quality_score/air_test_output.tsv -t ../data/E2_test.json
-For BM25 + AIR approach, run this: python3 retrievel_eval_AIR_gold.py -o ./MultiRC_BM25_vs_POCC_justification_quality_score/air_bm25_test_output.tsv -t ../data/E2_test.json
+For Ours + AIR approach, run this: python3 retrieval_eval_AIR_gold.py -o ./MultiRC_BM25_vs_POCC_justification_quality_score/air_test_output.tsv -t ../data/E2_test.json
 ```
 
 ### Silver corpus
@@ -48,6 +41,31 @@ For BM25 + AIR approach, run this: python3 retrievel_eval_AIR_gold.py -o ./Multi
 ```bash
 python3 retrievel_eval_AIR.py -o output_file -t ../data/E2_test.json
 For example: 
-For Ours + AIR approach: python3 retrievel_eval_AIR.py -o ./MultiRC_BM25_vs_POCC_justification_quality_score/air_omcs_test_output.tsv -t ../data/E2_test.json
-For BM25 + AIR approach: python3 retrievel_eval_AIR.py -o ./MultiRC_BM25_vs_POCC_justification_quality_score/air_bm25_omcs_test_output.tsv -t ../data/E2_test.json
+For Ours + AIR approach: python3 retrieval_eval_AIR.py -o ./MultiRC_BM25_vs_POCC_justification_quality_score/air_omcs_test_output.tsv -t ../data/E2_test.json
+```
+
+## Overall Pipeline
+For Ours + AIR + Gold corpus:
+```bash
+python3 Compute_IDF.py -i ../air_test.json
+python3 AIR_evidence_retrieval_scores.py -i ../air_test.json -o air_test_output.tsv
+python3 retrieval_eval_AIR_gold.py -o ./MultiRC_BM25_vs_POCC_justification_quality_score/air_test_output.tsv -t ../data/E2_test.json
+```
+For BM25 + AIR + Gold corpus:
+```bash
+python3 Compute_IDF.py -i ../air_bm25_test.json
+python3 AIR_evidence_retrieval_scores.py -i ../air_bm25_test.json -o air_bm25_test_output.tsv
+python3 retrieval_eval_AIR_gold.py -o ./MultiRC_BM25_vs_POCC_justification_quality_score/air_bm25_test_output.tsv -t ../data/E2_test.json
+```
+For Ours + AIR + Silver corpus:
+```bash
+python3 Compute_IDF.py -i ../air_omcs_test.json
+python3 AIR_evidence_retrieval_scores.py -i ../air_omcs_test.json -o air_omcs_test_output.tsv
+python3 retrieval_eval_AIR.py -o ./MultiRC_BM25_vs_POCC_justification_quality_score/air_omcs_test_output.tsv -t ../data/E2_test.json
+```
+For BM25 + AIR + Silver corpus:
+```bash
+python3 Compute_IDF.py -i ../air_bm25_omcs_test.json
+python3 AIR_evidence_retrieval_scores.py -i ../air_bm25_omcs_test.json -o air_bm25_omcs_test_output.tsv
+python3 retrieval_eval_AIR.py -o ./MultiRC_BM25_vs_POCC_justification_quality_score/air_bm25_omcs_test_output.tsv -t ../data/E2_test.json
 ```
