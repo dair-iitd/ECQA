@@ -1,6 +1,7 @@
 import os
 import argparse
 import subprocess
+from tqdm import tqdm
 
 from semantic_text_similarity.models import WebBertSimilarity
 from semantic_text_similarity.models import ClinicalBertSimilarity
@@ -413,7 +414,7 @@ def main():
     sts_threshold = 3
 
     counter = []
-    for k in range(len(data["Input"])):
+    for k in tqdm(range(len(data["Input"]))):
     #   if (k % 500 == 0):
     #     print(k)
       l1 = data["Gold"][k]
