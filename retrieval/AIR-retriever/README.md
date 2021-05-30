@@ -3,7 +3,7 @@ The AIR retriever code is taken from https://github.com/vikas95/AIR-retriever.gi
 
 ## Running Experiments:
 
-1] Download the GLoVe embeddings 'glove.6B.100d.txt' in this folder. You can download it from [here](https://www.kaggle.com/danielwillgeorge/glove6b100dtxt)
+1] Download the GLoVe embeddings 'glove.6B.100d.txt' in this folder. You can download it from [here](http://nlp.stanford.edu/data/glove.6B.zip) Select the 100d vectors file.
 
 2] Download 'wordnet' from nltk.
 ```bash
