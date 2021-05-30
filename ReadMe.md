@@ -29,7 +29,7 @@ Now you can head over to the [retrieval section](https://github.com/dair-iitd/EC
 
 ## Trained Models
 
-We public release the models we trained using the training scripts, to report the numbers published in our ACL papers [here at Zenodo](/).
+We public release the models we trained using the training scripts, to report the numbers published in our ACL papers [here at Zenodo](https://zenodo.org/record/4784281).
 
 The above release contains 5 zip files, having the following filename to model mapping -
 * 'xgf1.zip' : XGF-I
