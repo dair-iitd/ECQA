@@ -1,6 +1,7 @@
 import os
 import argparse
 import subprocess
+from tqdm import tqdm
 
 from semantic_text_similarity.models import WebBertSimilarity
 from semantic_text_similarity.models import ClinicalBertSimilarity
@@ -254,7 +255,7 @@ def main():
     
     
     print("STS-BERT==============")
-    sts_bert_output = [web_model.predict([(data['gold'][i], data['output'][i])])[0] for i in range(len(data['input']))]
+    sts_bert_output = [web_model.predict([(data['gold'][i], data['output'][i])])[0] for i in tqdm(range(len(data['input'])))]
     print('Average: ', np.average(sts_bert_output)/5)
 
 if __name__ == '__main__':
