@@ -1,7 +1,7 @@
 import os
 import argparse
 import subprocess
-
+from tqdm import tqdm
 
 from semantic_text_similarity.models import WebBertSimilarity
 from semantic_text_similarity.models import ClinicalBertSimilarity
@@ -468,9 +468,8 @@ def main():
     sts_fscore = 0.0
     count = 0
     sts_threshold = 3
-
     counter = []
-    for i in range(0, len(data['q_text'])):
+    for i in tqdm(range(0, len(data['q_text']))):
       # if i % 500 == 0:
       #   print(i)
       true_props = data['property'][i]
