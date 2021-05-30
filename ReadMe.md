@@ -18,6 +18,12 @@ cqa_data_test.csv
 
 Copy all of these files at ```retrieval/data/```.
 
+For running our code, you will need to install some python packages. It's recommended to first setup a ```python3.7``` virtual environment for these. You can run the following command to install the required packages -
+
+```bash
+pip3 install -r requirements.txt
+```
+
 Now you can head over to the [retrieval section](https://github.com/dair-iitd/ECQA/tree/master/retrieval) or [generation section](https://github.com/dair-iitd/ECQA/tree/master/generation) to perform our experiments with this data.
 
 
