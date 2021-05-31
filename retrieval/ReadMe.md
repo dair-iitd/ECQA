@@ -34,6 +34,14 @@ cd data
 python3 E2_data_generator.py
 ```
 
+## Reproducibility of Paper's Results
+
+To obtain the exact same results as we obtained from our given trained models, you might need to install older versions of some of the python packages. For the same, run the following command -
+```bash
+pip3 install -r requirements.txt
+```
+
+You can skip the above if you are not concerned if reproducing the exact same numbers as reported in our ACL paper.
 
 ## BM-25
 
@@ -92,7 +100,7 @@ Now follow the evaluation steps mentioned [here](https://github.com/dair-iitd/EC
 Run the following command to evaluate the input_file for top-k approach where k = 3 for positive properties and k = 1 for negative properties for gold corpus. Results would be the Exact Recall, Precision and F scores.
 ```bash
 python retrieval_eval_gold.py -i input_file
-For example: 
+For example:
 For Ours + top-k approach, run this: python retrieval_eval_gold.py -i 3_dx_sets.json
 For BM25 + top-k approach, run this: python retrieval_eval_gold.py -i 3_bm25_sets.json
 ```
@@ -102,7 +110,7 @@ Setup the all the folders as described in README of generation section for evalu
 This would evaluate the input_file for top-k approach where k = 3 for positive properties and k = 1 for negative properties for silver corpus. Results would be the Recall, Precision and F scores for different metrics (STS-BERT score, SPICE, CIDEr and ROUGE) using the bipartite matching as described in the paper.
 ```bash
 python retrieval_eval.py -i input_file
-For example: 
+For example:
 For Ours + top-k approach, run this: python retrieval_eval.py -i 3_omcs_dx_sets.json
 For BM25 + top-k approach, run this: python retrieval_eval.py -i 3_omcs_bm25_sets.json
 ```
