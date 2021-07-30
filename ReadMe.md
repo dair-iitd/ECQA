@@ -1,6 +1,6 @@
 # Explanations for CommonsenseQA: Code And Models
 
-This repository contains the publicly released code for the experimentation section of the Explanations for CommonsenseQA paper, presented at ACL-IJCNLP 2021. There are two subdirectories, ```retrieval``` and ```generation```, corresponding to the Section 5 and Section 6 respectively, in our ACL paper. These two sections have their separate ReadMe files intructing on how to train and run inference with trained models.
+This repository contains the publicly released code for the experimentation section of the Explanations for CommonsenseQA paper, presented at ACL-IJCNLP 2021. Same contents are also made available by our research partner IBM Research [here](https://github.com/IBM/ecqa). You can download the paper from [here](https://aclanthology.org/2021.acl-long.238/). There are two subdirectories, ```retrieval``` and ```generation```, corresponding to the Section 5 and Section 6 respectively, in our ACL paper. These two sections have their separate ReadMe files intructing on how to train and run inference with trained models.
 
 We release the complete annotated dataset, the id mappings for the train, test and validation split used in our experiments, at [https://github.com/dair-iitd/ECQA-Dataset/](https://github.com/dair-iitd/ECQA-Dataset/). Please follow the instructions mentioned there to glue up our annotations with the CQA data.
 
